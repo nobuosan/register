@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'sessions/new'
   get'users/:id' ,to:"users#show"
   get 'signup' ,to:'users#new'
   root to:"homes#index"
@@ -10,5 +11,9 @@ Rails.application.routes.draw do
   get '/memos/:id/edit' ,to:'memos#edit'
   patch '/memos/:id' ,to:'memos#update'
   get '/categories/:id',to:'categories#show'
+  #login
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'  
   resources :users
 end
